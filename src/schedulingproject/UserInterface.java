@@ -46,7 +46,7 @@ public class UserInterface {
 
   public void printSchedulingResult(Map<String, Object> map) {
     int totalProcessingTime = (int) map.get("totalProcessingTime");
-    int averageLatency = (int) map.get("averageLatency");
+    double averageLatency = (double) map.get("averageLatency");
     initMenu(sc -> {
       System.out.println("총 처리 시간: " + totalProcessingTime);
       System.out.println("평균 대기 시간: " + averageLatency);

@@ -8,9 +8,9 @@ import java.util.Queue;
 
 public abstract class Scheduling {
 
-  private UserInterface userInterface;
+  private UserInterface userInterface = new UserInterface();
 
-  void run(Queue<Process> processes) {
+  public void run(Queue<Process> processes) {
     userInterface.printSchedulingResult(scheduleProcess(processes));
   }
 

@@ -38,12 +38,13 @@ public class Client {
         Technique technique = Technique.findByQualifier(menu);
         if (technique != null) {
           technique.getScheduling().run(queue);
-        }
-        switch (menu) {
-          case "9":
-            break;
-          case "10":
-            return;
+        } else if ("9".equals(menu)) {
+          queue.clear();
+          break;
+        } else if ("10".equals(menu)) {
+          return;
+        } else {
+          System.out.println("잘못된 입력입니다.");
         }
       }
     }

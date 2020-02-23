@@ -1,6 +1,6 @@
 package schedulingproject;
 
-public class Process {
+public class Process{
 
   private String name;
   private int arrivalTime;
@@ -62,7 +62,9 @@ public class Process {
     sb.append("name='").append(name).append('\'');
     sb.append(", arrivalTime=").append(arrivalTime);
     sb.append(", priority=").append(priority);
-    sb.append(", burstTime=").append(burstTime);
+    sb.append(", burstTime=").append(burstTime)
+    .append("}");
     return sb.toString();
   }
+
 }
