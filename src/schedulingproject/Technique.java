@@ -8,7 +8,7 @@ public enum Technique {
 
   FCFS("1", new FirstComeFirstServed()),
   SJF("2", new ShortestJob()),
-  SRTF("3", new ShrtestRemainingTimeFirst()),
+  SRTF("3", new ShortestRemainingTimeFirst()),
   NON_PREEMPTIVE_PRIORITY("4", new NonPreemptivePriority()),
   PREEMPTIVE_PRIORITY("5", new PreemptivePriority()),
   RR("6", new RoundRobing()),

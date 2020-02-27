@@ -16,13 +16,13 @@ public class Client {
           "P" + i,
           i,
           (int) (Math.random() * 10) + 1,
-          (int) (Math.random() * 10) + 1,
+          (int) (Math.random() * 10) + 2,
           0);
       queue.add(process);
     }
   }
 
-  public void run() {
+  public void run() throws CloneNotSupportedException {
     while (true) {
       int processCount;
       try {

@@ -4,14 +4,14 @@ import schedulingproject.Process;
 
 import java.util.*;
 
-public class NonPreemptivePriority extends Scheduling {
+public class ShortestRemainingTimeFirst extends Scheduling {
   @Override
   Map<String, Object> scheduleProcess(Queue<Process> processes) throws CloneNotSupportedException {
     Map<String, Object> map = new HashMap<>();
     Queue<Process> queue = new LinkedList<>();
     cloneProcess(queue, processes);
     TreeSet<Process> treeSet = new TreeSet<>(((o1, o2) -> {
-      if (o1.getPriority() < o2.getPriority()) return -1;
+      if (o1.getBurstTime() < o2.getBurstTime()) return -1;
       else if (o1.getName().equals(o2.getName())) return 0;
       else return 1;
     }));
@@ -33,6 +33,9 @@ public class NonPreemptivePriority extends Scheduling {
         treeSet.add(arrivalProcess);
       }
       if (process == null) {
+        process = treeSet.first();
+      }
+      if (!treeSet.isEmpty() && process != treeSet.first()) {
         process = treeSet.first();
       }
       if (process.getBurstTime() == 0) {

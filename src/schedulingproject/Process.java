@@ -1,6 +1,6 @@
 package schedulingproject;
 
-public class Process{
+public class Process implements Cloneable{
 
   private String name;
   private int arrivalTime;
@@ -67,4 +67,14 @@ public class Process{
     return sb.toString();
   }
 
+  @Override
+  public boolean equals(Object obj) {
+    Process process = (Process) obj;
+    return this.name.equals(process.getName());
+  }
+
+  @Override
+  public Object clone() throws CloneNotSupportedException {
+    return super.clone();
+  }
 }
