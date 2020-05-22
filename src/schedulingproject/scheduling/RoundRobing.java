@@ -23,7 +23,7 @@ public class RoundRobing extends Scheduling {
     int timeDivision = 3;
 
     while (!queue.isEmpty() || !cloneQueue.isEmpty() || process != null) {
-      System.out.println("time: " + time + "\tQueue: " + queue);
+      System.out.println("time: " + time);
       int finalTime = time;
       Process arrivalProcess =
           cloneQueue.stream().filter(pro -> pro.getArrivalTime() == finalTime).findFirst().orElse(null);
@@ -31,6 +31,7 @@ public class RoundRobing extends Scheduling {
         cloneQueue.remove(arrivalProcess);
         queue.add(arrivalProcess);
       }
+      System.out.println("queue: " + queue);
       if (process == null) {
         process = queue.poll();
       }
@@ -38,17 +39,14 @@ public class RoundRobing extends Scheduling {
 
       process.setBurstTime(process.getBurstTime() - 1);
 
+      averageLatency += (long) queue.size();
+      System.out.println();
 
       if (process.getBurstTime() == 0) {
         if (queue.isEmpty() && cloneQueue.isEmpty()) break;
         process = queue.poll();
-        timeDivision = 3;
+        timeDivision = 4;
       }
-
-      Process finalProcess = process;
-      averageLatency += queue.stream().filter(pro -> !pro.getName().equals(finalProcess.getName())).count();
-      System.out.println("averageLatency: " + averageLatency);
-      System.out.println();
 
       time++;
       timeDivision--;

@@ -8,6 +8,8 @@ public class Process implements Cloneable{
   private int burstTime;
   private int waitingTime;
 
+  public Process(){}
+
   public Process(String name, int arrivalTime, int priority, int burstTime, int waitingTime) {
     this.name = name;
     this.arrivalTime = arrivalTime;
